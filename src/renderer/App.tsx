@@ -1,45 +1,26 @@
-import React,{ useState } from 'react'
+import { useState } from 'react'
 import logo from './assets/logo.svg'
-import './App.css'
+import { css } from '@emotion/react'
+import { HashRouter, Redirect, Route } from 'react-router-dom';
+import SideBar from './components/SideBar';
+import MainView from './components/MainView';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is: {count}aa
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+    <HashRouter>
+      <Route path="/" exact>
+        <Redirect to="/首页"/>
+      </Route>
+      <div css={css`
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 200px auto;
+      `}>
+        <SideBar />
+        <MainView />
+      </div>
+    </HashRouter>
+  );
 }
-
 export default App
