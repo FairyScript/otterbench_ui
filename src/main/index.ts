@@ -22,7 +22,7 @@ if (!gotTheLock) {
   const env = import.meta.env;
 
 
-  // Install "Vue.js devtools BETA"
+  // Install "React Developer Tools"
   if (env.MODE === 'development') {
     app.whenReady()
       .then(() => import('electron-devtools-installer'))
