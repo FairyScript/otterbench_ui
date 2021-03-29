@@ -14,6 +14,9 @@ const App: React.FC = () => {
       <div css={css`
         width: 100vw;
         height: 100vh;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
         display: grid;
         grid-template-columns: 200px auto;
       `}>

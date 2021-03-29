@@ -2,9 +2,9 @@
  *  TODO: Refactor this file
  */
 
-import {app, BrowserWindow} from 'electron';
-import {join} from 'path';
-import {URL} from 'url';
+import { app, BrowserWindow, ipcMain } from 'electron';
+import { join } from 'path';
+import { URL } from 'url';
 
 
 
@@ -26,7 +26,7 @@ if (!gotTheLock) {
   if (env.MODE === 'development') {
     app.whenReady()
       .then(() => import('electron-devtools-installer'))
-      .then(({default: installExtension}) => {
+      .then(({ default: installExtension }) => {
         /** @see https://chrome.google.com/webstore/detail/fmkadmapgofadopljbjfkapdkoienihi */
         const REACT_DEVTOOLS = 'fmkadmapgofadopljbjfkapdkoienihi';
         return installExtension(REACT_DEVTOOLS);
@@ -40,14 +40,15 @@ if (!gotTheLock) {
     mainWindow = new BrowserWindow({
       width: 960,
       height: 640,
-      show: false,
+      transparent: true,
+      frame: false,
       resizable: false,
+      show: false,
       autoHideMenuBar: true,
       webPreferences: {
         preload: join(__dirname, '../preload/index.cjs.js'),
         contextIsolation: env.MODE !== 'test',   // Spectron tests can't work with contextIsolation: true
         enableRemoteModule: env.MODE === 'test', // Spectron tests can't work with enableRemoteModule: false
-        
       },
     });
 
@@ -68,6 +69,21 @@ if (!gotTheLock) {
     if (env.MODE === 'development') {
       mainWindow.webContents.openDevTools();
     }
+
+    //ipcMain
+    ipcMain.on('minimize', () => {
+      const focusWindow = BrowserWindow.getFocusedWindow()
+      if (focusWindow && focusWindow.isMinimizable()) {
+        focusWindow.minimize()
+      }
+    })
+    ipcMain.on('close', () => {
+      const focusWindow = BrowserWindow.getFocusedWindow()
+      if (focusWindow) {
+        focusWindow.close()
+      }
+    })
+
   }
 
 
@@ -96,7 +112,7 @@ if (!gotTheLock) {
   if (env.PROD) {
     app.whenReady()
       .then(() => import('electron-updater'))
-      .then(({autoUpdater}) => autoUpdater.checkForUpdatesAndNotify())
+      .then(({ autoUpdater }) => autoUpdater.checkForUpdatesAndNotify())
       .catch((e) => console.error('Failed check updates:', e));
   }
 }

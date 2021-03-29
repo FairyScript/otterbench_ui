@@ -1,4 +1,4 @@
-import {contextBridge} from 'electron';
+import { contextBridge, ipcRenderer } from 'electron';
 
 const apiKey = 'electron';
 /**
@@ -6,6 +6,8 @@ const apiKey = 'electron';
  */
 const api = {
   versions: process.versions,
+  minimize: () => ipcRenderer.send('minimize'),
+  close: () => ipcRenderer.send('close'),
 } as const;
 
 

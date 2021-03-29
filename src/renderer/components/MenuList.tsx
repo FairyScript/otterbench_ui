@@ -52,6 +52,7 @@ const MenuItem: React.FC<MenuProps> = ({ id, ...props }) => {
       align-items: center;
       justify-content: space-around; 
       color: white;
+      -webkit-app-region: no-drag;
 
       transition: all .3s ease-in-out;
       ${isActive && css`
