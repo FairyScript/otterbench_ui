@@ -1,5 +1,4 @@
 import { css, SerializedStyles } from "@emotion/react";
-import { useSpring } from "@react-spring/core";
 import { Route, useHistory, useParams } from "react-router";
 
 const icons = import.meta.globEager('../assets/menuicons/*.png')
