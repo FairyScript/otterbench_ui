@@ -1,5 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
 import { Route, useHistory, useParams } from "react-router";
+import { sourceHan } from "../styles/fonts/fonts";
 
 const icons = import.meta.globEager('../assets/menuicons/*.png')
 
@@ -72,6 +73,7 @@ const MenuItem: React.FC<MenuProps> = ({ id, ...props }) => {
           display: block;
           text-align: center;
           font-size: 17px;
+          ${sourceHan};
         }
       }
 
