@@ -38,11 +38,16 @@ if (!gotTheLock) {
 
   async function createWindow() {
     mainWindow = new BrowserWindow({
+      width: 960,
+      height: 640,
       show: false,
+      resizable: false,
+      autoHideMenuBar: true,
       webPreferences: {
         preload: join(__dirname, '../preload/index.cjs.js'),
         contextIsolation: env.MODE !== 'test',   // Spectron tests can't work with contextIsolation: true
         enableRemoteModule: env.MODE === 'test', // Spectron tests can't work with enableRemoteModule: false
+        
       },
     });
 
@@ -57,7 +62,7 @@ if (!gotTheLock) {
 
     //@ts-ignore
     await mainWindow.loadURL(pageUrl);
-    mainWindow.maximize();
+    //mainWindow.maximize();
     mainWindow.show();
 
     if (env.MODE === 'development') {
