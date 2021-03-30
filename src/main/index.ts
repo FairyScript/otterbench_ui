@@ -80,6 +80,8 @@ if (!gotTheLock) {
     ipcMain.on('close', () => {
       const focusWindow = BrowserWindow.getFocusedWindow()
       if (focusWindow) {
+        console.log('close');
+        
         focusWindow.close()
       }
     })

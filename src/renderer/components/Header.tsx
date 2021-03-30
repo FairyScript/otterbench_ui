@@ -77,7 +77,10 @@ const ControlBar: React.FC = () => {
         -
       </div>
 
-      <div>
+      <div onClick={()=>{
+        //@ts-ignore
+        window.electron.close()
+      }}>
         x
       </div>
     </div>
