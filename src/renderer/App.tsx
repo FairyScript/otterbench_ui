@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import logo from './assets/logo.svg'
 import { css } from '@emotion/react'
 import { HashRouter, Redirect, Route } from 'react-router-dom';
 import SideBar from './components/SideBar';

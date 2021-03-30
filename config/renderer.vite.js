@@ -15,6 +15,10 @@ module.exports = {
   },
   plugins: [reactRefresh()],
   base: '',
+  esbuild: {
+    jsxFactory: 'jsx',
+    jsxInject: 'import {jsx} from "@emotion/react"',
+  },
   build: {
     sourcemap: 'inline',
     target: `chrome${chrome}`,

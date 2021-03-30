@@ -15,11 +15,9 @@ const MainView: React.FC = () => {
       <Route path="/:id">
         <Header />
       </Route>
-      <>
         <Route path="/首页" >
           <HomePage />
         </Route>
-      </>
     </div>
   );
 }

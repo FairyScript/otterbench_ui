@@ -9,16 +9,17 @@
   "scripts": {
     "buildEnvTypes": "node ./bin/buildEnvTypes.js",
     "build": "node ./bin/build.js",
-    "precompile": "cross-env MODE=production npm run build",
+    "precompile": "cross-env MODE=production yarn build",
     "compile": "electron-builder build --config ./config/electron-builder.js",
+    "compile:nopack": "electron-builder build --config ./config/electron-builder.js --dir -c.compression=store -c.mac.identity=null",
     "pretest": "cross-env MODE=test npm run build",
     "test": "node ./tests/app.spec.js",
     "watch": "node ./bin/watch.js",
-    "lint": "eslint . --ext js,ts,vue",
+    "lint": "eslint . --ext js,ts,react",
     "pretypecheck": "npm run buildEnvTypes",
     "typecheck-main": "tsc --noEmit -p ./src/main/tsconfig.json",
     "typecheck-preload": "tsc --noEmit -p ./src/preload/tsconfig.json",
-    "typecheck-renderer": "vuedx-typecheck ./src/renderer --no-pretty",
+    "typecheck-renderer": "tsc --noEmit -p ./src/renderer/tsconfig.json",
     "typecheck": "npm run typecheck-main && npm run typecheck-preload && npm run typecheck-renderer",
     "unpack": "npx asar extract dist/app/win-unpacked/resources/app.asar dist/app/asar-unpacked/ "
   },
@@ -26,9 +27,6 @@
     "Chrome 89"
   ],
   "devDependencies": {
-    "@babel/preset-react": "^7.13.13",
-    "@emotion/babel-plugin": "^11.2.0",
-    "@rollup/plugin-babel": "^5.3.0",
     "@types/electron-devtools-installer": "^2.2.0",
     "@types/node": "^14.14.37",
     "@types/react": "^17.0.3",
