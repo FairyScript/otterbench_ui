@@ -3,7 +3,7 @@ import { css, SerializedStyles } from "@emotion/react";
 interface ButtonProp extends React.HTMLProps<HTMLDivElement> {
   disabled?: boolean;
 }
-const OttoButton: React.FC<ButtonProp> = (props) => {
+const OtterButton: React.FC<ButtonProp> = (props) => {
   const { disabled, children } = props
   
 
@@ -35,4 +35,4 @@ const OttoButton: React.FC<ButtonProp> = (props) => {
   );
 }
 
-export default OttoButton
+export default OtterButton

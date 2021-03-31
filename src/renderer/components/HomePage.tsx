@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { sourceHan } from "../styles/fonts/fonts";
 import Banner from "./Banner";
-import OttoButton from "./OttoButton";
+import OtterButton from "./OtterButton";
 import Status from "./PluginStatus";
 
 const HomePage: React.FC = () => {
@@ -42,7 +42,7 @@ const PluginList: React.FC = () => {
         }
       `}>
         <div id="today">今日推荐</div>
-        <div id="all"><OttoButton>全部插件</OttoButton></div>
+        <div id="all"><OtterButton>全部插件</OtterButton></div>
       </div>
       <div css={css`
         padding-left: 10px;
@@ -165,7 +165,7 @@ const PluginBuy: React.FC<BuyProps> = ({ isInstalled, price }) => {
         display: flex;
         align-items: center;
       `}>
-      <OttoButton
+      <OtterButton
         disabled={isInstalled}
       >
         {isInstalled ?
@@ -174,7 +174,7 @@ const PluginBuy: React.FC<BuyProps> = ({ isInstalled, price }) => {
             style: 'currency',
             currency: 'CNY',
           })}
-      </OttoButton>
+      </OtterButton>
     </div>
   );
 }
