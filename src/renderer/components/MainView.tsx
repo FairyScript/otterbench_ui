@@ -8,9 +8,10 @@ const MainView: React.FC = () => {
     <div css={css`
       height: 100%;
       box-sizing: border-box;
-      padding: 25px 24px 0px 35px;
+      padding: 25px 24px 0px 25px;
       display: flex;
       flex-direction: column;
+      background-color:#ebeae9;
     `}>
       <Route path="/:id">
         <Header />

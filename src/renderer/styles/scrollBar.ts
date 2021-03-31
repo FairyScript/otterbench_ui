@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 
 export default css`
+
 ::-webkit-scrollbar-track
   {
     border-radius: 5px;

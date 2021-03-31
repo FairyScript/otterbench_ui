@@ -9,6 +9,7 @@ const Header: React.FC = () => {
       height: 45px;
       display: flex;
       margin-bottom: 25px;
+      padding-left: 10px;
     `}>
       <Title />
 

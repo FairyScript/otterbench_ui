@@ -1,20 +1,21 @@
 import { css } from "@emotion/react";
-import __StatusPlaceHolder from '../assets/status.png'
-import scrollBar from "../styles/scrollBar";
-import SwiperCore, { Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css'
+import { sourceHan } from "../styles/fonts/fonts";
+import Banner from "./Banner";
+import OttoButton from "./OttoButton";
+import Status from "./PluginStatus";
+
 const HomePage: React.FC = () => {
   return (
     <div css={css`
-      display: flex;
       flex: 1;
-      width: 100%;
+      display: grid;
+      grid-template-columns: 60% 40%;
       overflow: hidden;
       -webkit-app-region: no-drag;
     `}>
       <div css={css`
         flex: 1;
+        margin-right: 30px;
       `}>
         <Banner />
         <PluginList />
@@ -26,121 +27,154 @@ const HomePage: React.FC = () => {
 
 export default HomePage
 
-SwiperCore.use([Pagination])
-const Banner: React.FC = () => {
-  const slideCss = css`
-    height: 100%;
-  `
-  const items = banner.map((v, i) => <SwiperSlide key={i} ><BannerItem {...v} /></SwiperSlide>)
-  return (
-    <Swiper
-      slidesPerView="auto"
-      pagination={{ clickable: true }}
-      css={css`
-        background-color: #ccc;
-        height: 170px;
-        overflow: hidden;
-        border-radius: 10px;
-
-        .swiper-pagination {
-          text-align: right;
-          left: -20px;
-          bottom: 5px;
-        }
-        .swiper-pagination-bullet {
-          border-radius: 25%;
-          width: 10px;
-          height: 10px;
-          background: #fff;
-        }
-      `}
-    >
-      {items}
-    </Swiper>
-  );
-}
-
-const images = import.meta.globEager('../assets/banners/*.jpg')
-
-const banner: BannerProp[] = [
-  {
-    image: images['../assets/banners/banner1.jpg'].default,
-    title: 'LIVE直播第61弹！5.4版本前瞻！4月1日19点上演'
-  },
-  {
-    image: images['../assets/banners/banner2.jpg'].default,
-    title: 'LIVE番外：第63回制作人来信转播 4月2日上演'
-  },
-  {
-    image: images['../assets/banners/banner3.jpg'].default,
-    title: '道具商城新道具上架：2020年猎蛋节系列'
-  }
-]
-
-interface BannerProp {
-  image: string;
-  title: string;
-}
-const BannerItem: React.FC<BannerProp> = ({ image, title }) => {
-  return (
-    <div css={css`
-      width: 100%;
-      height: 100%;
-      position: relative;
-    `}>
-      <img
-        src={image}
-        css={css`
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          filter: brightness(.7);
-
-          transition: filter .3s ease-in-out;
-          :hover {
-            filter: brightness(1);
-          }
-        `}
-      />
-      <span css={css`
-        position: absolute;
-        left: 10px;
-        bottom: 5px;
-        color: #eee;
-        font-weight: bold;
-        font-size: 20px;
-      `}>
-        {title}
-      </span>
-    </div>
-  );
-}
-
-const BannerSelect: React.FC = () => {
-  return (
-    <div>
-
-    </div>
-  );
-}
 
 const PluginList: React.FC = () => {
   return (
-    null
+    <div>
+      <div css={css`
+        display: flex;
+        margin: 20px 0 0 10px ;
+
+        #today {
+          font-size: 18px;
+          ${sourceHan};
+          flex: 1;
+        }
+      `}>
+        <div id="today">今日推荐</div>
+        <div id="all"><OttoButton>全部插件</OttoButton></div>
+      </div>
+      <div css={css`
+        padding-left: 10px;
+      `}>
+        {data.map(v => <ModItem key={v.name} {...v} />)}
+      </div>
+    </div>
   );
 }
 
-const Status: React.FC = () => {
+const data: ModProps[] = [
+  {
+    name: 'F92+装修',
+    author: 'Redfissure',
+    description: '不许偷家（？）',
+    price: 35,
+  },
+  {
+    name: 'Penumbra Otter Edition',
+    author: 'NO.2 HUAZI',
+    description: 'MOD工具，兼容獭兹贝特1.1.3以上版本',
+    price: 0,
+    isInstalled: true,
+  },
+  {
+    name: '全自动深层迷宫',
+    author: 'Dev.',
+    description: '支持国服5.35版本，可多开',
+    price: 128,
+  },
+]
+
+interface ModProps {
+  name: string;
+  author: string;
+  description?: string;
+  img?: string;
+  price?: number;
+  isInstalled?: boolean;
+}
+const ModItem: React.FC<ModProps> = (props) => {
   return (
     <div css={css`
-      width: 40%;
-      height: 100%;
-      margin-left: 35px;
-      overflow: auto;
-      ${scrollBar};
+      background-color: white;
+      height: 83px;
+      margin-top: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(120,120,120,.5);
+      overflow: hidden;
+      display: flex;
+      position: relative;
     `}>
-      <img src={__StatusPlaceHolder} alt="" />
+
+      <PluginImage image={props.img} />
+      <PluginText name={props.name} author={props.author} description={props.description} />
+      <PluginBuy isInstalled={props.isInstalled} price={props.price} />
+
+    </div>
+  );
+}
+
+const PluginImage: React.FC<{ image?: string }> = ({ image }) => {
+  return (
+    <div css={css`
+      width: 83px;
+      height: 83px;
+      background-color: #ccc;
+    `}>
+    </div>
+  );
+}
+
+interface TextProps {
+  name: string;
+  author: string;
+  description?: string;
+}
+const PluginText: React.FC<TextProps> = ({ name, author, description }) => {
+  return (
+    <div css={css`
+      margin: 10px 0 10px 30px;
+      ${sourceHan};
+      flex: 1;
+      overflow: hidden;
+      
+      div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      #name {
+        font-size: 17px;
+      }
+      #author,#description {
+        color: #666;
+      }
+      #author {
+        font-size: 12px;
+      }
+      #description {
+        font-size: 14px;
+      }
+    `}>
+      <div id="name">{name}</div>
+      <div id="author">{author}</div>
+      <div id="description">{description || '没有描述'}</div>
+    </div>
+  );
+}
+
+interface BuyProps {
+  price?: number;
+  isInstalled?: boolean;
+}
+const PluginBuy: React.FC<BuyProps> = ({ isInstalled, price }) => {
+  return (
+    <div css={css`
+        height: 100%;
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+      `}>
+      <OttoButton
+        disabled={isInstalled}
+      >
+        {isInstalled ?
+          '已安装' :
+          price?.toLocaleString('zh-CN', {
+            style: 'currency',
+            currency: 'CNY',
+          })}
+      </OttoButton>
     </div>
   );
 }
