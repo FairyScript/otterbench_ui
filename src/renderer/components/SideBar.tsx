@@ -11,7 +11,6 @@ const SideBar: React.FC = () => {
       padding: 10px;
       display: flex;
       flex-direction: column;
-      -webkit-app-region: drag;
     `}>
       <Otter />
       <MenuList />

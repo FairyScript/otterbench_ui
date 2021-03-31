@@ -43,6 +43,7 @@ if (!gotTheLock) {
       transparent: true,
       frame: false,
       resizable: false,
+      maximizable: false,
       show: false,
       autoHideMenuBar: true,
       webPreferences: {
@@ -80,8 +81,6 @@ if (!gotTheLock) {
     ipcMain.on('close', () => {
       const focusWindow = BrowserWindow.getFocusedWindow()
       if (focusWindow) {
-        console.log('close');
-        
         focusWindow.close()
       }
     })

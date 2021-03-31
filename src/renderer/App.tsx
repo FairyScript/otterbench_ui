@@ -17,6 +17,11 @@ const App: React.FC = () => {
         overflow: hidden;
         display: grid;
         grid-template-columns: 200px auto;
+        -webkit-app-region: drag;
+
+        & > div {
+          height: 100vh;
+        }
       `}>
         <SideBar />
         <MainView />

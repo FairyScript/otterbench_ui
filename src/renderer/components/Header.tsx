@@ -1,22 +1,21 @@
 import { css } from "@emotion/react";
 import { useHistory, useParams } from "react-router-dom";
 import { xiaoWeiLogo } from "../styles/fonts/fonts";
+import Account from "./Account";
 
 const Header: React.FC = () => {
   return (
     <div css={css`
       height: 45px;
-      display: grid;
-      grid-template-columns: 3fr 2fr;
+      display: flex;
+      margin-bottom: 25px;
     `}>
-      <div css={css`
-        display: flex;
-      `}>
-        <Title />
-      </div>
+      <Title />
 
       <div css={css`
+        width: 40%;
         display: flex;
+        -webkit-app-region: no-drag;
       `}>
         <Account />
         <ControlBar />
@@ -33,8 +32,8 @@ const title = {
   采集: 'GATHERING',
   生产: 'CRAFTING',
   战斗: 'COMBAT',
-  插件: 'PLUGIN',
-  设置: 'SETTING',
+  插件: 'PLUGINS',
+  设置: 'SETTINGS',
 }
 const Title: React.FC = () => {
   const { id } = useParams<{ id: keyof typeof title }>()
@@ -42,20 +41,12 @@ const Title: React.FC = () => {
   return (
     <div css={css`
       ${xiaoWeiLogo};
-      align-self: flex-end;
       font-size: 24px;
+      flex: 1;
+      align-self: flex-end;
+
     `}>
       {title[id]}
-    </div>
-  );
-}
-
-const Account: React.FC = () => {
-  return (
-    <div css={css`
-      flex: 1;
-    `}>
-
     </div>
   );
 }
