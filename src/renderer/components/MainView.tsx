@@ -8,6 +8,8 @@ const MainView: React.FC = () => {
   return (
     <div css={css`
       height: 100%;
+      width: 100%;
+      overflow: hidden;
       box-sizing: border-box;
       padding: 25px 24px 0px 25px;
       display: flex;
