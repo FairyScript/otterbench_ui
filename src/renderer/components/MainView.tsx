@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { Route } from "react-router";
+import CraftingPage from "./CraftingPage";
 import GatheringPage from "./GatheringPage";
 import Header from "./Header";
 import HomePage from "./HomePage";
@@ -24,6 +25,9 @@ const MainView: React.FC = () => {
         </Route>
         <Route path="/采集" >
           <GatheringPage />
+        </Route>
+        <Route path="/生产" >
+          <CraftingPage />
         </Route>
     </div>
   );

@@ -3,6 +3,9 @@ import { sourceHan } from "../styles/fonts/fonts";
 import Banner from "./Banner";
 import OtterButton from "./OtterButton";
 import Status from "./PluginStatus";
+import png1 from '../static/hjg.jpg'
+import png2 from '../static/penu.png'
+import png3 from '../static/tzyz.png'
 
 const HomePage: React.FC = () => {
   return (
@@ -59,6 +62,7 @@ const data: ModProps[] = [
     author: 'Redfissure',
     description: '不许偷家（？）',
     price: 35,
+    img: png1,
   },
   {
     name: 'Penumbra Otter Edition',
@@ -66,12 +70,14 @@ const data: ModProps[] = [
     description: 'MOD工具，兼容獭兹贝特1.1.3以上版本',
     price: 0,
     isInstalled: true,
+    img: png2,
   },
   {
     name: '全自动深层迷宫',
     author: 'Dev.',
     description: '支持国服5.35版本，可多开',
     price: 128,
+    img: png3,
   },
 ]
 
@@ -110,7 +116,14 @@ const PluginImage: React.FC<{ image?: string }> = ({ image }) => {
       width: 83px;
       height: 83px;
       background-color: #ccc;
+      overflow: hidden;
+      
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
     `}>
+      <img src={image} alt=""/>
     </div>
   );
 }
