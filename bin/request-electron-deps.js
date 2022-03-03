@@ -4,7 +4,6 @@
  * @see https://github.com/electron/electron/issues/28006
  */
 
-
 /**
  * @typedef Vendors
  * @type {{
@@ -32,7 +31,7 @@
  *
  * @type {null | Vendors}
  */
-let runtimeCache = null;
+let runtimeCache = null
 
 /**
  * Returns information about dependencies of the specified version of the electron
@@ -48,41 +47,41 @@ const loadDeps = () => {
       env: {
         ELECTRON_RUN_AS_NODE: '1',
       },
-    },
-  );
+    }
+  )
 
-  return JSON.parse(stringifiedDeps);
-};
+  return JSON.parse(stringifiedDeps)
+}
 
-const saveToCache = (dist) => {
-  runtimeCache = dist;
-};
+const saveToCache = dist => {
+  runtimeCache = dist
+}
 
 /**
  *
  * @return {null|Vendors}
  */
-const loadFromCache = () => runtimeCache;
+const loadFromCache = () => runtimeCache
 
 /**
  *
  * @return {Vendors}
  */
 const getElectronDist = () => {
-  let dist = loadFromCache();
+  let dist = loadFromCache()
 
   if (dist) {
-    return dist;
+    return dist
   }
 
-  dist = loadDeps();
+  dist = loadDeps()
 
-  saveToCache(dist);
+  saveToCache(dist)
 
-  return dist;
-};
+  return dist
+}
 
-const {node, modules} = getElectronDist();
+const { node, modules } = getElectronDist()
 
-module.exports.node = node;
-module.exports.chrome = modules;//.split('.')[0];
+module.exports.node = node
+module.exports.chrome = modules //.split('.')[0];

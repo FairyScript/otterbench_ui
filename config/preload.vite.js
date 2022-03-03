@@ -1,5 +1,5 @@
-const {chrome} = require('./electron-vendors');
-const {join} = require('path');
+const { chrome } = require('./electron-vendors')
+const { join } = require('path')
 
 /**
  * @type {import('vite').UserConfig}
@@ -31,4 +31,4 @@ module.exports = {
     },
     emptyOutDir: true,
   },
-};
+}

@@ -1,6 +1,6 @@
-const {join} = require('path');
-const {chrome} = require('./electron-vendors');
-import reactRefresh from '@vitejs/plugin-react-refresh';
+const { join } = require('path')
+const { chrome } = require('./electron-vendors')
+import reactRefresh from '@vitejs/plugin-react-refresh'
 
 /**
  * @type {import('vite').UserConfig}
@@ -30,5 +30,4 @@ module.exports = {
     },
     emptyOutDir: true,
   },
-};
-
+}

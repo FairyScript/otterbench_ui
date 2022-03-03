@@ -6,39 +6,22 @@ module.exports = {
     node: true,
     browser: false,
   },
-  extends: [
-    /** @see https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#recommended-configs */
-    'plugin:@typescript-eslint/recommended',
-  ],
   parserOptions: {
+    parser: '@typescript-eslint/parser',
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: [
-    '@typescript-eslint',
+  ignorePatterns: ['types/env.d.ts', 'node_modules/**', 'dist/**'],
+  extends: [
+    /** @see https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#recommended-configs */
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
   ],
-  ignorePatterns: [
-    'types/env.d.ts',
-    'node_modules/**',
-    'dist/**',
-  ],
-
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    /**
-     * Having a semicolon helps the optimizer interpret your code correctly.
-     * This avoids rare errors in optimized code.
-     */
-    semi: ['error', 'always'],
-
-    /**
-     * This will make the history of changes in the hit a little cleaner
-     */
-    'comma-dangle': ['warn', 'always-multiline'],
-
-    /**
-     * Just for beauty
-     */
-    quotes: ['warn', 'single'],
+    'prettier/prettier': 'warn',
+    'arrow-body-style': 'off',
+    'prefer-arrow-callback': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
   },
-};
-
+}

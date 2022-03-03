@@ -1,5 +1,7 @@
-const now = new Date;
-const buildVersion = `${now.getFullYear() - 2000}.${now.getMonth() + 1}.${now.getDate()}`;
+const now = new Date()
+const buildVersion = `${now.getFullYear() - 2000}.${
+  now.getMonth() + 1
+}.${now.getDate()}`
 
 /**
  * @type {import('electron-builder').Configuration}
@@ -10,12 +12,10 @@ const config = {
     output: 'dist/app',
     buildResources: 'buildResources',
   },
-  files: [
-    'dist/source/**',
-  ],
+  files: ['dist/source/**'],
   extraMetadata: {
     version: buildVersion,
   },
-};
+}
 
-module.exports = config;
+module.exports = config

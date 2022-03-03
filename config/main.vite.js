@@ -1,12 +1,11 @@
-const {node} = require('./electron-vendors');
-const {join} = require('path');
+const { node } = require('./electron-vendors')
+const { join } = require('path')
 
 /**
  * @type {import('vite').UserConfig}
  * @see https://vitejs.dev/config/
  */
 module.exports = () => {
-
   return {
     resolve: {
       alias: {
@@ -33,5 +32,5 @@ module.exports = () => {
       },
       emptyOutDir: true,
     },
-  };
-};
+  }
+}
