@@ -1,9 +1,9 @@
-import { css } from "@emotion/react";
-import { sourceHan } from "../styles/fonts/fonts";
+import { css } from '@emotion/react'
+import { sourceHan } from '../styles/fonts/fonts'
 
-const OtterTitle: React.FC<React.HTMLProps<HTMLDivElement>> = (props) => {
+const OtterTitle: React.FC<React.HTMLProps<HTMLDivElement>> = props => {
   return (
-    <div 
+    <div
       css={css`
         font-size: 18px;
         ${sourceHan};
@@ -11,7 +11,7 @@ const OtterTitle: React.FC<React.HTMLProps<HTMLDivElement>> = (props) => {
       `}
       {...props}
     />
-  );
+  )
 }
 
 export default OtterTitle

@@ -19,7 +19,12 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    'prettier/prettier': 'warn',
+    'prettier/prettier': [
+      'warn',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     'arrow-body-style': 'off',
     'prefer-arrow-callback': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
